@@ -46,7 +46,7 @@ class Usuario():
     def rua(self):
         return self.__rua 
 
-    @cep.setter
+    @rua.setter
     def rua(self, rua):
         self.__rua = rua
 

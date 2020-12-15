@@ -10,6 +10,6 @@ class Usuario(db.Model):
     cpf = db.Column(db.String(11), nullable=False)
     cep = db.Column(db.String(8), nullable=False)
     rua = db.Column(db.String(100), nullable=False)
-    bairro = db.Column(db.String(20), nullable=False)
-    cidade = db.Column(db.String(20), nullable=False)
+    bairro = db.Column(db.String(80), nullable=False)
+    cidade = db.Column(db.String(80), nullable=False)
     estado = db.Column(db.String(20), nullable=False)
