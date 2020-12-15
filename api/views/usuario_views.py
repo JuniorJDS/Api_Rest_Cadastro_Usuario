@@ -41,4 +41,14 @@ class Usuario(Resource):
             return make_response(usg.jsonify(resultado), 201) 
 
 
+class UsuarioDetail(Resource):
+    def get(id):
+        pass
+
+    def put(id):
+        pass
+
+    def delete(id):
+        pass
+
 api.add_resource(Usuario, '/usuario')

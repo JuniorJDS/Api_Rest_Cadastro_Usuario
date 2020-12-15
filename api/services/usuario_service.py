@@ -14,3 +14,7 @@ def listar_usuarios():
     usuarios = usuario_model.Usuario.query.all()
     return usuarios
 
+def listar_usuario_id(id):
+    usuario = usuario_model.Usuario.query.filter_by(id=id).first()
+    return usuario
+
