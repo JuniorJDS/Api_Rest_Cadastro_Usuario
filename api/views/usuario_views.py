@@ -8,7 +8,9 @@ import pycep_correios
 
 class Usuario(Resource):
     def get(self):
-        return 'Hello world'
+        lista_de_usuarios = usuario_service.listar_usuarios()
+        us = usuario_schema.Usuario(many=True)
+        return make_response(us.jsonify(lista_de_usuarios), 200)
 
     def post(self):
         us = usuario_schema.UsuarioGet()
