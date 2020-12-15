@@ -1,10 +1,14 @@
 
-class usuario():
-    def __init__(self, nome, data_nascimento, cpf, endereco):
+class Usuario():
+    def __init__(self, nome, data_nascimento, cpf, cep, rua, bairro, cidade, estado):
         self.__nome = nome
         self.__data_nascimento = data_nascimento
         self.__cpf = cpf
-        self._endereco = endereco
+        self.__cep = cep
+        self.__rua = rua
+        self.__bairro = bairro
+        self.__cidade = cidade
+        self.__estado = estado
 
     @property
     def nome(self):
@@ -31,9 +35,41 @@ class usuario():
         self.__cpf = cpf
 
     @property
-    def endereco(self):
-        return self.__endereco 
+    def cep(self):
+        return self.__cep 
 
-    @endereco.setter
-    def endereco(self, endereco):
-        self.__endereco = endereco
+    @cep.setter
+    def cep(self, cep):
+        self.__cep = cep
+    
+    @property
+    def rua(self):
+        return self.__rua 
+
+    @cep.setter
+    def rua(self, rua):
+        self.__rua = rua
+
+    @property
+    def bairro(self):
+        return self.__bairro
+
+    @bairro.setter
+    def bairro(self, bairro):
+        self.__bairro = bairro
+
+    @property
+    def cidade(self):
+        return self.__cidade
+
+    @cidade.setter
+    def cidade(self, cidade):
+        self.__cidade = cidade  
+    
+    @property
+    def estado(self):
+        return self.__estado
+
+    @estado.setter
+    def estado(self, estado):
+        self.__estado = estado 

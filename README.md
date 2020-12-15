@@ -2,7 +2,7 @@
 
 ## Ambiente Virtual e instalando requirements
 ```
-    $ python3 -m venv plataforma_venv
+    $ python3 -m venv venv
 
     $ source venv/bin/activate
 
