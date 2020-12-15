@@ -23,3 +23,4 @@ def create_app(config_name):
     return app
 
 from .views import usuario_views
+from .models import usuario_model
