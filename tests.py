@@ -1,5 +1,6 @@
 import unittest
 from unittest import mock
+from datetime import datetime
 from api import create_app, db
 import json
 from api.entidades import usuario
@@ -8,31 +9,35 @@ from api.models import usuario_model
 import requests
 
 
+
 class TestIntegracao(unittest.TestCase):
 
     @classmethod
     def setUp(self):
-        app = create_app("testing")
-        self.app = app.test_client()
+        self.app = create_app("testing")
+        self.client = self.app.test_client
+        self.user = {'nome': 'Junior tr', 
+                     'data_nascimento': '2019-01-22', 
+                     'cpf': '12312312312', 
+                     'cep': '20751060'
+                    }
+
+        with self.app.app_context():
+            db.create_all()
+
+    def tearDown(self):
+        with self.app.app_context():
+            db.session.remove()
+            db.drop_all()
     
 
     def test_01_hello_world(self):
-        # Send a request to the API server and store the response.
-        response = requests.get('http://127.0.0.1:5000/usuario')
-
-        # Confirm that the request-response cycle completed successfully.
-        assert_true(response.ok)
-        #""" Teste do servidor Flask"""
-        #r = requests.get('http://127.0.0.1:5000/usuario')
-        #print(r.text)
-        #self.assertEqual(r.status_code, 200)
-
-    #def test_usuario_obj(self):
-        #user = usuario_model.Usuario(nome='name', data_nascimento='23/01/1988', cpf='12345678912', 
-        #cep='27325170', rua='rua jose fagundes', bairro='Ns Ap', cidade='Barra Mansa', estado='RJ')
-        #self.assertEqual(user.estado, 'RJ')
-        #self.assertEqual(user.cep, '27325170')
-        #self.assertEqual(user.data_nascimento, '23/01/1988')
+        """Test API can create a bucketlist (POST request)"""
+        res = self.client().post('/usuario', data=self.user)
+        print(res)
+        print(self.user)
+        #self.assertEqual(res.status_code, 201)
+        #self.assertIn('Go to Borabora', str(res.data))
 
 
 if __name__=='__main__':

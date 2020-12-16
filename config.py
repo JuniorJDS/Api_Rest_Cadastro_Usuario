@@ -4,6 +4,9 @@ import os
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SWAGGER = { 
+                "title": "4intelligence API"
+                }
 
 
 class DevelopmentConfig(Config):

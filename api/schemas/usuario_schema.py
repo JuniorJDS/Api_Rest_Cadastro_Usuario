@@ -1,5 +1,6 @@
 from api import ma
-from marshmallow import fields
+from marshmallow import fields, Schema
+from marshmallow.validate import Length
 from ..models import usuario_model
 
 
@@ -21,10 +22,10 @@ class Usuario(ma.SQLAlchemySchema):
 class UsuarioGet(ma.SQLAlchemySchema):
     class Meta:
         model = usuario_model.Usuario
-        fields = ('id', 'nome', 'data_nascimento', 'cpf', 'cep')
+        fields = ('nome', 'data_nascimento', 'cpf', 'cep')
 
 
     nome = fields.String(required=True)
     data_nascimento = fields.Date(required=True)
-    cpf = fields.String(required=True, unique=True)
+    cpf = fields.String(required=True, unique=True, validate=Length(equal=11))
     cep = fields.String(required=True)
