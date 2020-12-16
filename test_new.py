@@ -6,6 +6,7 @@ import json
 from api.entidades import usuario
 from api.services import usuario_service
 from api.models import usuario_model
+import requests
 
 
 
@@ -22,11 +23,6 @@ class TestHome(unittest.TestCase):
         db.drop_all()
         self.app_context.pop()
 
-    #def test_01_hello_world(self):
-        #""" Teste do servidor Flask"""
-        #r = requests.get('http://127.0.0.1:5000/usuario')
-        #print(r.text)
-        #self.assertEqual(r.status_code, 200)
         
     def test_usuario_obj(self):
         user = usuario.Usuario(nome='name', data_nascimento='1988-01-01', cpf='12345678912', 
@@ -45,6 +41,7 @@ class TestHome(unittest.TestCase):
         self.assertEqual(user.nome, usuario_cadastrado.nome)
         self.assertEqual(user.cpf, usuario_cadastrado.cpf)
         self.assertEqual(user.estado, usuario_cadastrado.estado)
+
 
     def test_listar_cliente(self):
         pass

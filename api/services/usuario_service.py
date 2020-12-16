@@ -18,3 +18,17 @@ def listar_usuario_id(id):
     usuario = usuario_model.Usuario.query.filter_by(id=id).first()
     return usuario
 
+def remover_usuario(usuario):
+    db.session.delete(usuario)
+    db.session.commit()
+
+def editar_usuario(usuario_bd, usuario_novo):
+    usuario_bd.nome  = usuario_novo.nome
+    usuario_bd.data_nascimento  = usuario_novo.data_nascimento
+    usuario_bd.cpf  = usuario_novo.cpf
+    usuario_bd.cep  = usuario_novo.cep
+    usuario_bd.rua  = usuario_novo.rua
+    usuario_bd.bairro  = usuario_novo.bairro
+    usuario_bd.cidade  = usuario_novo.cidade
+    usuario_bd.estado  = usuario_novo.estado
+    db.session.commit()
