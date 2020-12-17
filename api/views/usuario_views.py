@@ -98,8 +98,8 @@ class Usuario(Resource):
                 description: cep inválido ou não encontrado. 
         
         """
-        usg = usuario_schema.UsuarioGet()
-        errors = usg.validate(request.json)
+        usp = usuario_schema.UsuarioPost()
+        errors = usp.validate(request.json)
         if errors:
             return make_response(jsonify(errors), 400)
         else:
@@ -231,9 +231,9 @@ class UsuarioDetail(Resource):
         usuario_db = usuario_service.listar_usuario_id(id=id)
         if usuario_db is None:
             return make_response(jsonify('Usuário não Encontrado!'), 404)
-        usg = usuario_schema.UsuarioGet()
+        usp = usuario_schema.UsuarioPut()
 
-        errors = usg.validate(request.json)
+        errors = usp.validate(request.json)
         if errors:
             return make_response(jsonify(errors), 400)
         else:
