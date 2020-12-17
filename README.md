@@ -8,7 +8,15 @@ passar os seguintes dados:
 - cpf (será validado e permitido apenas um cadastro por usuário)
 - cep (também será validado e, a partir dele, será preenchido os dados de endereço)
 
-## Ambiente Virtual e instalando requirements
+## Docker
+
+
+```
+docker build -t api_user .
+docker-compose up -d
+```
+
+## clonando e rodando a aplicação
 ```
     $ python3 -m venv venv
 

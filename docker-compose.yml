@@ -8,8 +8,8 @@ services:
     ports:
     - "3306:3306"
 
-  container_user_flask_api:
-    image: user_flask_api
+  container_api_user:
+    image: api_user
     ports:
     - "5000:5000"
     environment:
