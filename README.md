@@ -8,7 +8,7 @@ passar os seguintes dados:
 - cpf (será validado e permitido apenas um cadastro por usuário)
 - cep (também será validado e, a partir dele, será preenchido os dados de endereço)
 
-## Docker
+## Docker - ESTÁ COM ERRO (Precisa adcionar os migrations)
 
 
 ```
@@ -16,7 +16,7 @@ docker build -t api_user .
 docker-compose up -d
 ```
 
-## clonando e rodando a aplicação
+## Clone o repositório e instale os requirements: 
 ```
     $ python3 -m venv venv
 
@@ -27,4 +27,27 @@ docker-compose up -d
     $ pip3 install -r requirements.txt
 
     doc http://127.0.0.1:5000/apidocs/
+```
+Crie um banco de dados Mysql com o nome "user_db" e migre as tabelas:
+```
+    $ export FLASK_APP=run.py
+
+    $ flask db init
+
+    $ flask db migrate
+
+    $ flask db upgrade
+
+    $ flask run
+```
+## Endpoints 
+Inicialmente estão implementados os seguintes endpoints:
+
+#### Usuários
+- ``` usuario ``` - GET - Lista todos os usuários cadastrados
+- ``` usuario ``` - POST - Cria um usuário 
+
+### Documentação com swagger
+```
+http://127.0.0.1:5000/apidocs/
 ```
