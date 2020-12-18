@@ -44,10 +44,21 @@ Crie um banco de dados Mysql com o nome "user_db" e migre as tabelas:
 Inicialmente estão implementados os seguintes endpoints:
 
 #### Usuários
-- ``` usuario ``` - GET - Lista todos os usuários cadastrados
-- ``` usuario ``` - POST - Cria um usuário 
+- ``` /usuario ``` - GET - Lista todos os usuários cadastrados
 
-### Documentação com swagger
+- ``` /usuario ``` - POST - Cria um usuário a partir da entrada abaixo
+
+``` 
+{
+	"nome": "nome",
+	"data_nascimento": "xxxx-xx-xx",
+	"cpf": "cpf válido",
+	"cep": "cep válido"
+}
 ```
-http://127.0.0.1:5000/apidocs/
-```
+- ``` /usuario/:id ``` - GET - Lista os dados de um usuário
+- ``` /usuario/:id ``` - PUT - Atualiza um usuário cadastrado
+- ``` /usuario/:id ``` - DELETE - Remove um usuário cadastrado
+
+- ``` /usuario/apidocs/ ``` - Documentação da Api com [Flasgger](http://127.0.0.1:5000/usuario)
+
