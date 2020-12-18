@@ -1,7 +1,7 @@
 version: "3"
 services:
   container_mysql:
-    image: mysql
+    image: mysql:5.7
     environment:
       MYSQL_DATABASE: user_db
       MYSQL_ROOT_PASSWORD: root
@@ -13,8 +13,11 @@ services:
     ports:
     - "5000:5000"
     environment:
-      SQLALCHEMY_DATABASE_URI: 'mysql://root:root@127.0.0.1:3306/user_db'
+      SQLALCHEMY_DATABASE_URI: 'mysql://root:root@container_mysql:3306/user_db'
       SECRET_KEY: 'testar2@'
+    build: 
+      dockerfile: Dockerfile
+      context: .
     depends_on:
       - container_mysql
 
